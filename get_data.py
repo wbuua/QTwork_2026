@@ -11,14 +11,13 @@ print('login respond  error_msg:'+lg.error_msg)
 #### 获取沪深A股历史K线数据 ####
 # frequency：数据类型，默认为d，日k线；d=日k线、w=周、m=月、5=5分钟、15=15分钟、30=30分钟、60=60分钟k线数据
 # adjustflag：复权类型，默认不复权：3；1：后复权；2：前复权
-# 获取当天日期
-end_date = datetime.now().strftime('%Y-%m-%d')
+end_date = datetime.now().strftime('%Y-%m-%d') # 获取当天日期
 # 定义股票代码和频率
 stock_code = "sh.600703"
 frequency = "d"
 rs = bs.query_history_k_data_plus(stock_code,
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,turn,tradestatus,pctChg,isST,peTTM,pbMRQ",
-    start_date='2025-01-01', end_date=end_date,
+    start_date='2005-01-01', end_date=end_date,
     frequency=frequency, adjustflag="2")
 print('query_history_k_data_plus respond error_code:'+rs.error_code)
 print('query_history_k_data_plus respond  error_msg:'+rs.error_msg)
