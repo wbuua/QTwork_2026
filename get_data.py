@@ -13,7 +13,7 @@ print('login respond  error_msg:'+lg.error_msg)
 # adjustflag：复权类型，默认不复权：3；1：后复权；2：前复权
 end_date = datetime.now().strftime('%Y-%m-%d') # 获取当天日期
 # 定义股票代码和频率
-stock_code = "sh.600703"
+stock_code = "sz.301047"
 frequency = "d"
 rs = bs.query_history_k_data_plus(stock_code,
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,turn,tradestatus,pctChg,isST,peTTM,pbMRQ",
@@ -28,6 +28,9 @@ while (rs.error_code == '0') & rs.next():
     # 获取一条记录，将记录合并在一起
     data_list.append(rs.get_row_data())
 result = pd.DataFrame(data_list, columns=rs.fields)
+
+# 清洗数据，删除volume列数值为0的行
+result = result[result['volume'] != '0']
     
 #### 结果集输出到csv文件 ####   
 # 构造文件名：股票代码_end date_frequency
