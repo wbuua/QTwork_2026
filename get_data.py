@@ -13,7 +13,7 @@ print('login respond  error_msg:'+lg.error_msg)
 # adjustflag：复权类型，默认不复权：3；1：后复权；2：前复权
 end_date = datetime.now().strftime('%Y-%m-%d') # 获取当天日期
 # 定义股票代码和频率
-stock_code = "sz.301047"
+stock_code = "sz.000516"
 frequency = "d"
 rs = bs.query_history_k_data_plus(stock_code,
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,turn,tradestatus,pctChg,isST,peTTM,pbMRQ",
